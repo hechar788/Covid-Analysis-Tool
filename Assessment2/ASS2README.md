@@ -1,7 +1,7 @@
 Real-time Covid-19 data visualization using 3d model rendering 
 
 Current Tech Stack 
- - vite, javascript, 3js, python
+ - vite, javascript, 3js, react?, python
  - host through AWS S3 static hosting for the frontend and pythonanywhere.com to handle running the python scripts rather then AW$$$$
 
 24 July 2024 - Initial commit
