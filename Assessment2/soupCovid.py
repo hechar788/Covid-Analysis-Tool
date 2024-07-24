@@ -17,7 +17,7 @@ for row in table.findAll('tr'):
                      "totalCases": row_data[2],
                      "newCases": row_data[3],
                      "totalDeaths": row_data[4],
-                     "newDeaths": row_data[4],
+                     "newDeaths": row_data[5],
                      "totalRecovered": row_data[6],
                      "activeCases": row_data[7],
                      "criticalCases": row_data[8],
