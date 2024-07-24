@@ -10,5 +10,6 @@ Will host through AWS S3 static hosting for the javascript/3js/react? frontend a
   - Created Beautiful Soup HTML parsing script in python to scrape the data from the websites above and converted the data into valid, ordered JSON objects
 
 
-Currently working on - Finalizing Country/Covid Soup scripts to structure the data for consumption by frontend (?database?)
-                     - Developing 3d earth model in javascript and mapping countries long/lat to the model 
+Currently working on 
+ - Restructure JSON objects created by Soup scripts to be appropriate for consumption by the view/model
+ - Developing 3d earth model in javascript and mapping countries long/lat to the model 
