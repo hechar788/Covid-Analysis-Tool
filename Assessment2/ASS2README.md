@@ -13,6 +13,10 @@ Current Tech Stack
 24 July 2024 - Second commit
  - Optomized Soup scripts to properly match the original tables structure which will allow the data to be handled properly by the frontend/db
 
+25 July 2024 - Third commit
+ - Created a basic Flask API. This will be used by the frontend to fetch the covid/country data
+ - Currently it is being developed on localhost but after synchronizing the two datasets it will be pushed to pythonanywhere.com
+
  
 Currently working on 
  - Developing 3d earth model in javascript and mapping countries long/lat to the model 
