@@ -17,6 +17,10 @@ Current Tech Stack
  - Created a basic Flask API. This will be used by the frontend to fetch the covid/country data
  - Currently it is being developed on localhost but after synchronizing the two datasets it will be pushed to pythonanywhere.com
 
+25 July 2024 - Forth commit
+ - Synchronized data aggregation script into 1 centralized script with a function to traverse the parsed html
+ - This significantly reduced the amount of repeated code
+
  
 Currently working on 
  - Developing 3d earth model in javascript and mapping countries long/lat to the model 
