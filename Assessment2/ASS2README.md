@@ -19,7 +19,7 @@ Current Tech Stack
 
 25 July 2024 - Forth commit
  - Synchronized data aggregation script into 1 centralized script with a function to traverse the parsed html
- - This significantly reduced the amount of repeated code
+ - This significantly reduced the amount of repeated code and allowed me to centralize the imports from my model as well as prepare for joining of the datasets
 
  
 Currently working on 
