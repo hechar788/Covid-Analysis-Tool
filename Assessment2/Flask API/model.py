@@ -39,4 +39,14 @@ def extractCellInformationFromTable(table, tableNum=0):
 sortedCountryData = sorted(extractCellInformationFromTable(country_table, 1), key=lambda d: d['country'])
 sortedCovidData = sorted(extractCellInformationFromTable(covid_table), key=lambda d: d['country'])
 
-synchronizedCountryCovidData = 'coming soon'
+synchronizedCountryCovidData = []
+missingCountries = []
+
+covidDataMap = {entry['country']: entry for entry in sortedCovidData}
+
+for country in sortedCountryData:
+    if country['country'] in covidDataMap:
+        joined_data = {**country, **covidDataMap[country['country']]}
+        synchronizedCountryCovidData.append(joined_data)
+    else:
+        missingCountries.append(country)
