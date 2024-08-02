@@ -2,19 +2,37 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
-def extractCellInformationFromTable(table):
-    '''used to extract cell information from a parsed html table, returns a list so that it may be mapped with 
-     the other dataset effectively'''
+urls = ['https://developers.google.com/public-data/docs/canonical/countries_csv', 'https://www.worldometers.info/coronavirus/' ]
+parsedHTML = [BeautifulSoup(requests.get(x).text, 'html.parser') for x in urls]
+country_table = parsedHTML[0].find('table')
+covid_table = parsedHTML[1].find('table')
+
+def extractCellInformationFromTable(table, tableNum=0):
     table_data = []
     for row in table.findAll('tr'):
         row_data = [cell.text for cell in row.findAll('td')]
+        
         if row_data:
-            table_data.append({'countryID': row_data[0], 'lat': row_data[1], 'long': row_data[2], 'country': row_data[3]})
-    return table_data
+            if tableNum:
+                table_data.append({'countryID': row_data[0], 'lat': row_data[1], 'long': row_data[2], 'country': row_data[3]})
+                continue
+            table_data.append({
+                'totalCases': row_data[2],
+                'newCases': row_data[3],
+                'totalDeaths': row_data[4],
+                'newDeaths': row_data[5],
+                'totalRecovered': row_data[6],
+                'newRecovered': row_data[7],
+                'activeCases': row_data[8],
+                'seriousCriticalCases': row_data[9]
 
-url = 'https://developers.google.com/public-data/docs/canonical/countries_csv'
-parsedHTML = BeautifulSoup(requests.get(url).text, 'html.parser')
-sortedCountryData = sorted(extractCellInformationFromTable(parsedHTML.find('table')), key=lambda d: d['country'])
+            })
+     
+    return table_data[-1] if not tableNum else table_data
+
+
+sortedCountryData = sorted(extractCellInformationFromTable(country_table, 1), key=lambda d: d['country'])
+totalledCovidData = extractCellInformationFromTable(covid_table)
 
  
 with open('owid-covid-data.json') as f:
@@ -42,7 +60,7 @@ class DataStream:
         self.data = synchronizedCountryCovidData
 
     def start(self):
-        return {x['country']: [x['lat'], x['long']] for x in self.data}
+        return json.dumps({'countryData': {x['country']: [x['lat'], x['long']] for x in self.data}, 'covidTotals': totalledCovidData})
     
     def covidStatsByCountry(self, targetCountry):
         '''Returns list of objects containing data related to all covid statistics for the targetCountry
@@ -54,5 +72,4 @@ class DataStream:
                 return x['data']
 
 data = DataStream()
-
 # IMPORT data INTO FRONTEND PROJECT AND USE data.start() / data.covidStatsByCountry(<insert-target-country-string>)

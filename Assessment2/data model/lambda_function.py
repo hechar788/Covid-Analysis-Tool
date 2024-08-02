@@ -1,15 +1,13 @@
-from model import data, totalledCovidData
+from model import data
 
 def lambda_handler(event, context):
     try:
         if event['headers']['switch']:
-            requestedData=data.covidStatsByCountry(event['headers']['switch'])+totalledCovidData
+            requestedData=data.covidStatsByCountry(event['headers']['switch'])
     except:
         requestedData=data.start()
 
     return {
         'statusCode': 200,
         'body': requestedData
-    }
-
-#print(data.data[0].keys())
+}
