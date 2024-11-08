@@ -1,0 +1,16 @@
+.header-img {
+    width: 100vw;
+    height: 90vh;
+    opacity: 100%;
+    border-radius: .2em;
+}
+
+.header-text {
+    position: absolute;
+    margin: 0;
+    top: 10.5vh;
+    left: 9vw;
+    color: white;
+    width: 24vw;
+    font-size: 3.5vw;
+}

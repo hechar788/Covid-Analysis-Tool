@@ -1,0 +1,24 @@
+nav {
+    position: fixed;
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: right;
+    left: 0;
+    width: 100vw;
+    height: 7vh;
+    background-color: rgb(34, 32, 32);
+    border-bottom: 2px solid rgb(52, 52, 52);
+    z-index: 1000; 
+    visibility: hidden;
+    transition: visibility 0.15s ease-in-out;
+}
+
+.info-svg {
+    height: 4.5vh;
+    margin-right: 1.5vw
+}
+
+.nav-visible {
+    visibility: visible;
+}

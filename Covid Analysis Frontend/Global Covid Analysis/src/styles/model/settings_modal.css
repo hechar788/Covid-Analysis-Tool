@@ -1,0 +1,141 @@
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.75);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: rgba(41, 46, 66);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    opacity: 1;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    color: white;
+    text-align: center;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.titleCloseBtn button:hover {
+    color: rgb(180, 175, 175);
+}
+
+.modalContainer .body {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modalContainer .body h1 {
+    font-size: 1.35rem;
+    text-align: center;
+    width: 15vw;
+    color: white;
+}
+
+.modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-setting {
+    display: flex;
+    align-items: center;
+}
+
+#cancelBtn {
+    background-color: rgb(255, 72, 109);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6vw; /* Adjusted width */
+    height: 34px;
+    margin-left: 2.5vw;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: attr(data-label); /* Attribute to dynamically adjust the text */
+    height: 100%;
+    width: 50%; /* Takes half the slider's width */
+    line-height: 34px; /* To vertically center the text */
+    text-align: center;
+    color: white;
+    background-color: #333;
+    border-radius: 34px;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(100%); /* Moves the button to the right for checked */
+    background-color: #666; /* Different color to distinguish states */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}

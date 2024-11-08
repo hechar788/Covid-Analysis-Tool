@@ -1,0 +1,111 @@
+.model-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.model-selection {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings {
+    cursor: pointer;
+    left: 96%;
+}
+
+.settings, .go-back {
+    position: absolute;
+    width: 2.45vw;
+    top: 2.5vh;
+}
+
+.go-back {
+    left: 1.5%;
+    margin: 0;
+}
+
+.go-back:hover path, .settings:hover path {
+    fill: rgba(141, 141, 141, 0.774)
+}
+
+.model-title h1 {
+    color: white;
+    font-size: 3em;
+    margin: 2vh 0 3.5vh;
+}
+
+.model-title {
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 8.5vh;
+}
+
+.stat-selector-header {
+    color: white;
+    font-size: 2em;
+}
+
+.first-selection {
+    width: 100%;
+    margin: 1vh 0 1.5vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.go-button {
+    height: 3.5vh;
+    width: 10vw;
+    margin-top: 47.5vh;
+    font-size: 1.25em;
+}
+
+.go-button:hover {
+    cursor: pointer;
+}
+
+.go-button:active {
+    margin-top: 48vh;
+}
+
+.help-button {
+    color: white;
+    position: fixed;
+    width: auto;    
+    top: 95%;
+    left: 1.5%;
+    font-size: 1.25em;
+}
+
+.help-button:hover {
+    cursor: pointer;
+    color: rgba(141, 141, 141, 0.774);
+}
+
+.help-button:active {
+    top: 95.5%
+}
+
+.flatpickr-input {
+  margin: 3.25vh 0 0 1.5vw;
+  height: 3.85vh;
+  width: 12.5vw;
+  padding: 0 1.5vw;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  border-radius: .25em .25em 0 0;
+  font-size: 1.15em;
+  font-weight: 500;
+  color: black;
+  display: flex;
+}
+
+
