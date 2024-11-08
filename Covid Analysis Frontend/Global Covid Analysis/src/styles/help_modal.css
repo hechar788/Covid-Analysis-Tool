@@ -1,0 +1,58 @@
+.helpModalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .helpModalContainer {
+    background-color: white;
+    padding: 2vh 0;
+    border-radius: 8px;
+    width: 70%;
+    height: 80%;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .helpModalHeader {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .helpModalHeader button {
+    background: none;
+    border: none;
+    margin-right: 1.5vw;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .helpModalContent {
+    text-align: center;
+    padding: 0;
+    margin: 2.5vh 0;
+    width: 100%;
+  }
+
+.helpModalContent:nth-child(2) {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.helpModalContent:nth-child(3) {
+    margin-top: 5vh;
+}
+
+.helpModalContent h1 {
+    color: #000;
+}
+
+.helpModalContent h2 {
+    width: 43.5%;
+    align-items: flex-start;
+}

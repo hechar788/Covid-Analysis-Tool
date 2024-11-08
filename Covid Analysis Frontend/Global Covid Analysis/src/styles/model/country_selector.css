@@ -1,0 +1,147 @@
+.wrapper {
+  width: 90%;
+  margin: 5vh 0 0 1.5vw;
+}
+
+.wrapper .btn {
+  height: 4.5vh;
+  padding: 0 1.5vw;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  border-radius: .25em .25em 0 0;
+  font-size: 1.1em;
+  font-weight: 550;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.wrapper .btn span {
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  font-size: 1.125em;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 85%;
+}
+
+.wrapper .btn i {
+  font-size: 1.35em;
+  color: #222;
+  transition: 0.5s linear;
+}
+
+.wrapper.active .btn i {
+  transform: rotate(-180deg);
+}
+
+.wrapper .content {
+  position: absolute;
+  width: 27%;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 .5em .5em;
+  overflow: hidden;
+  height: 0;
+  z-index: 2;
+  transition: height 0.5s;
+}
+
+.wrapper.active .content {
+  height: 38.5vh; /* Set to 40vh when expanded */
+}
+
+.wrapper .content .search {
+  position: relative;
+  display: inline-block;
+  width: 17.5vw;
+  margin-top: 20px;
+  /* Add some margin-bottom to account for spacing */
+  margin-bottom: 10px;
+}
+
+.content .search input {
+  height: 3.5vh;
+  width: 95%;
+  margin-left: 10%;
+  font-size: 17px;
+  padding: 0 20px 0 43px;
+  outline: none;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+
+.select-all label span{
+  margin-left: 4.75vw;
+}
+
+.search input::placeholder {
+  color: #bfbfbf;
+}
+
+.search input:focus {
+  padding-left: 42px;
+  border: 1px solid lightgrey;
+}
+
+.content .search i {
+  font-size: 20px;
+  color: #999;
+  position: absolute;
+  top: 50%;
+  left: 14.5%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.content ul {
+  /* Calculate based on total content area minus search height */
+  max-height: calc(40vh - 3.5vh - 30px); /* Adjust according to any padding or margins */
+  margin-top: 1.5vh;
+  overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+  width: 7px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 25px;
+}
+
+ul li {
+  height: 4vh;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  font-size: 1.415em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 0.425s;
+}
+
+ul li:hover {
+  background: #f2f2f2;
+}
+
+ul li.hide {
+  display: none;
+}
+
+.btn span > *:nth-child(1),
+ul li .iconify {
+  filter: drop-shadow(0px 0px 2px #222);
+  margin: 0vh 2vw 0 1vw;
+}

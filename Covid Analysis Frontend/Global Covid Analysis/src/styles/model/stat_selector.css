@@ -1,0 +1,69 @@
+.stat-selector {
+    width: 100%;
+}
+
+.stat-selector-title {
+    display: flex;
+    justify-content: space-between; /* Ensures space between the title and icon */
+    align-items: flex-end; /* Aligns children to the bottom */
+    cursor: pointer;
+    padding: 1.15vh 1.5vw;
+    border-bottom: 1px solid #ccc;
+}
+
+.stat-selector-title i {
+    margin: 0  0 0 auto; /* Ensures the icon is aligned to the right */
+    color: white;
+}
+
+.stat input {
+    width: 2.5vw;
+    cursor: pointer;
+}
+
+.stat p {
+    color: white;
+    text-align: start;
+    font-size: 1.35em;
+    white-space: nowrap;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: rgb(25, 25, 25);
+    width: 30%;
+    padding-bottom: 4.35vh;
+    overflow-y: auto;
+}
+
+.stat-selector-title i {
+    margin-bottom: .75vh;
+}
+
+.stat:nth-child(1) {
+    margin-top: .5vh;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+    margin-left: 1.5vw;
+    width:  80%;
+    cursor: pointer;
+}
+
+.stat:hover {
+    background-color: rgb(46, 46, 46)
+}
+
+.stat-selector-title h2 {
+    margin: 0; /* Remove default margins to ensure consistency */
+}
+
+.stat-selector-title i {
+    margin-left: 0; /* Remove auto margin to work with space-between */
+    font-size: 1.5em;
+}
+
