@@ -1,5 +1,4 @@
-import headerDark from '../../assets/header.png'
-import headerLight from '../../assets/header-light.png'
+import headerDark from '../../assets/header.webp'
 import '../../styles/home/header.css'
 
 export default function Header(){

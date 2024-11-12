@@ -15,7 +15,6 @@ export default function Countries({
     // Determine the min and max dates based on selectedDates
     const minDate = selectedDates && selectedDates.length > 0 ? selectedDates[0] : "2020-01-05";
     const maxDate = selectedDates && selectedDates.length > 1 ? selectedDates[1] : "2024-07-04";
-
     return (
         <>
             <div className="countries-title-wrapper">
@@ -52,7 +51,7 @@ export default function Countries({
                             onClick={() => handleCountryClick(country)}
                         >
                             <div className="countries-list-card-title list-header">
-                                <p className="country-title">{country.country}</p>
+                                <p className="country-title">{country.location}</p>
                                 {selectedStats.includes("Population") && (
                                     <p className="country-title population">Population: {country.population}</p>
                                 )}

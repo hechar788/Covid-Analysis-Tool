@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import JEASINGS, { Cubic, JEasing } from 'jeasings';
 import day_map from '../../assets/3dmodel/day_earthmap.jpg';
 import night_map from '../../assets/3dmodel/night_earthmap.jpg';
-import background from '../../assets/3dmodel/model_background.jpg';
+import background from '../../assets/3dmodel/model_background.webp';
 
 export default function Globe({ selectedCountry, globeMode, selectedCountries, stopRotation}) {
     const canvasRef = useRef();

@@ -27,13 +27,21 @@
   max-width: 85%;
 }
 
-.wrapper .btn i {
-  font-size: 1.35em;
-  color: #222;
-  transition: 0.5s linear;
+/* Remove `i` style and replace with CSS arrow */
+.wrapper .btn::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
+  transition: transform 0.5s linear;
 }
 
-.wrapper.active .btn i {
+.wrapper.active .btn::after {
   transform: rotate(-180deg);
 }
 
@@ -50,7 +58,7 @@
 }
 
 .wrapper.active .content {
-  height: 38.5vh; /* Set to 40vh when expanded */
+  height: 38.5vh;
 }
 
 .wrapper .content .search {
@@ -58,7 +66,6 @@
   display: inline-block;
   width: 17.5vw;
   margin-top: 20px;
-  /* Add some margin-bottom to account for spacing */
   margin-bottom: 10px;
 }
 
@@ -73,7 +80,7 @@
   border-radius: 5px;
 }
 
-.select-all label span{
+.select-all label span {
   margin-left: 4.75vw;
 }
 
@@ -86,7 +93,9 @@
   border: 1px solid lightgrey;
 }
 
-.content .search i {
+/* Replace search icon with custom CSS or another method if necessary */
+.content .search::before {
+  content: '🔍'; /* Simple emoji as an example */
   font-size: 20px;
   color: #999;
   position: absolute;
@@ -97,8 +106,7 @@
 }
 
 .content ul {
-  /* Calculate based on total content area minus search height */
-  max-height: calc(40vh - 3.5vh - 30px); /* Adjust according to any padding or margins */
+  max-height: calc(40vh - 3.5vh - 30px);
   margin-top: 1.5vh;
   overflow-y: auto;
 }
@@ -124,7 +132,7 @@ ul li {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  gap: 1.5vw;
+  gap: 0.5rem; /* Adjusted gap for spacing between elements */
   font-size: 1.415em;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -140,8 +148,10 @@ ul li.hide {
   display: none;
 }
 
-.btn span > *:nth-child(1),
-ul li .iconify {
-  filter: drop-shadow(0px 0px 2px #222);
-  margin: 0vh 2vw 0 1vw;
+ul li span.fi {
+  margin: 0 0 0 1vw; /* Space between the flag and checkbox */
+}
+
+ul li .country-name {
+  margin-left: 1vw; /* Space between the checkbox and country name */
 }

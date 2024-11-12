@@ -4,6 +4,7 @@ import Countries from "./countries";
 import Play from "../../assets/svg/play";
 import '../../styles/model/analysis_menu.css';
 import AnalysisModal from "./analysis_modal";
+import countriesJson from '../../countries.json';
 
 export default function AnalysisMenu({
   selectedCountries,
@@ -19,21 +20,20 @@ export default function AnalysisMenu({
   const [currentDate, setCurrentDate] = useState(() => selectedDates.length > 0 ? new Date(selectedDates[0]) : null);
   const [isPlusClicked, setIsPlusClicked] = useState(false);
   const [playButton, setPlayButton] = useState(false);
-  const [plusClickedCountry, setPlusClickedCountry] = useState(null); // Store entire country object
+  const [plusClickedCountry, setPlusClickedCountry] = useState(null);
 
   useEffect(() => {
     async function fetchCovidStatsByCountries(countries) {
-      const response = await fetch('http://localhost:80/multiple', {
+      const response = await fetch('https://ubsohkp64nc37pkny6fjm6ljgy0ptymb.lambda-url.ap-southeast-2.on.aws/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({ targetCountries: countries, targetDates: selectedDates }),
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(response);
       }
 
       const data = await response.json();
@@ -59,21 +59,27 @@ export default function AnalysisMenu({
   };
 
   const handleCountryClick = (country) => {
-    setSelectedCountry({ name: country.country, lat: country.lat, lng: country.long });
+    // Find the lat/lng from the JSON data
+    const countryDetails = countriesJson.find(item => item.name === country.location);
+    if (countryDetails) {
+      setSelectedCountry({ name: country.location, lat: countryDetails.lat, lng: countryDetails.lng });
+    } else {
+      console.error("Country details not found in countries.json for:", country.location);
+    }
     setStopRotation(true);
-    setPlayButton(true)
+    setPlayButton(true);
   };
 
   const handlePlusClick = (event, country) => {
-    event.stopPropagation(); // Stop the click event from bubbling up to the country div
+    event.stopPropagation();
     setIsPlusClicked(true);
     setPlusClickedCountry(country);
     console.log(country);
   };
 
   useEffect(() => {
-    console.log(selectedStats);
-  }, [selectedStats]);
+    console.log(countriesData);
+  }, [countriesData]);
 
   return (
     <>
