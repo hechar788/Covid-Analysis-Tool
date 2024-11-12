@@ -36,25 +36,27 @@ export default function MenuSelection({ setSelectedDates, selectedDates, setAnal
                     setStopRotation={setStopRotation}
                 />
                 <Flatpickr
-                    placeholder="Target Date (Optional)"
+                    placeholder="Target Date"
                     options={{
                         maxDate: "2024-07-06",
                         minDate: "2020-01-05",
                         enableTime: false
                     }}
-                    value={selectedDates[0] || ''} // Display the date if it exists
+                    value={selectedDates[0] || ''}
                     onChange={handleTargetDateChange}
                 />
-                <Flatpickr
-                    placeholder="End Date (Optional)"
-                    options={{
-                        maxDate: "2024-07-06",
-                        minDate: selectedDates.length > 0 ? selectedDates[0] : "2020-01-05",
-                        enableTime: false
-                    }}
-                    value={selectedDates[1] || ''} // Display the date if it exists
-                    onChange={handleEndDateChange}
-                />
+                {selectedDates[0] && (
+                    <Flatpickr
+                        placeholder="End Date (Optional)"
+                        options={{
+                            maxDate: "2024-07-06",
+                            minDate: selectedDates[0],
+                            enableTime: false
+                        }}
+                        value={selectedDates[1] || ''}
+                        onChange={handleEndDateChange}
+                    />
+                )}
             </div>
             <StatSelector selectedStats={selectedStats} setSelectedStats={setSelectedStats} analysisMode={analysisMode}/>
             <button onClick={() => {

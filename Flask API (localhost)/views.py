@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint
-from data_aggregation_script import synchronizedCountryCovidData, totalledCovidData
-from model import covidStatsByCountryAndDate, covidStatsByCountryAndDateRange, covidStatsByDate, covidStatsByDateRange
+from data_aggregation_script import synchronizedCountryCovidData
+from model import covidStatsByDate, covidStatsByDateRange
 
 views = Blueprint(__name__, 'views')
 
@@ -48,12 +48,15 @@ def covidStatsByCountries():
 
     if len(targetDates) == 2:
         data = covidStatsByDateRange(targetDates[0], targetDates[1])
+    elif len(targetDates) == 1:
+        data = covidStatsByDate(targetDates[0])
     else: 
         data = synchronizedCountryCovidData
-
+    
     full_countries = []
     for x in targetCountries:
         for i in data:
             if x['name'] == i['country']:
                 full_countries.append(i)
+    print(full_countries)
     return jsonify(full_countries)

@@ -33,7 +33,7 @@
     background-color: rgb(25, 25, 25);
     width: 30%;
     padding-bottom: 4.35vh;
-    overflow-y: auto;
+    overflow-y: none;
 }
 
 .stat-selector-title i {

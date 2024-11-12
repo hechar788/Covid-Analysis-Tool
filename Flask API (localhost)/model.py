@@ -1,32 +1,45 @@
+from datetime import timedelta
+from dateutil import parser
 from data_aggregation_script import synchronizedCountryCovidData
+
+def convert_iso_date_to_simple_date(isoDateString):
+    # Parse the ISO date string into a datetime object
+    dt = parser.isoparse(isoDateString)
+    # Add one day using timedelta
+    adjusted_date = dt.date() + timedelta(days=1)
+    # Return the adjusted date in 'YYYY-MM-DD' format
+    return adjusted_date.isoformat()
 
 def covidStatsByDate(targetDate):
     '''
     #print(data.covidStatsByDate('2024-07-12'))
     '''
-    return [(x['country'], x['gdp_per_capita'], x['population'], x['life_expectancy'], x['hospital_beds_per_thousand'], x['handwashing_facilities'], i) for x in synchronizedCountryCovidData for i in x['data'] if i['date'] == targetDate]
+    targetDate = convert_iso_date_to_simple_date(targetDate)
+    result = []
+    for x in synchronizedCountryCovidData:
+        filtered_data = [i for i in x['data'] if i['date'] == targetDate]
+        if filtered_data:
+            country_data = x.copy()
+            country_data['data'] = filtered_data
+            result.append(country_data)
+    return result
 
+def covidStatsByDateRange(min, max):
+    result = []
+    for x in synchronizedCountryCovidData:
+        filtered_data = [i for i in x['data'] if min <= i['date'] <= max]
+        
+        if filtered_data:
+            country_data = x.copy()
+            country_data['data'] = filtered_data
+            result.append(country_data)
+    return result
 
 def covidStatsByCountryAndDate(targetDate, targetCountry):
     '''
     #print(data.covidStatsByCountryAndDate('2024-07-12', 'New Zealand'))
     '''
     return [(x['country'], x['gdp_per_capita'], x['population'], x['life_expectancy'], x['hospital_beds_per_thousand'], x['handwashing_facilities'], i) for x in synchronizedCountryCovidData for i in x['data'] if i['date'] == targetDate and x['country'] == targetCountry]
-
-
-def covidStatsByDateRange(min, max):
-    result = []
-    
-    for x in synchronizedCountryCovidData:
-        filtered_data = [i for i in x['data'] if min <= i['date'] <= max]
-        
-        if filtered_data:
-            # Create a new dictionary containing the filtered data
-            country_data = x.copy()
-            country_data['data'] = filtered_data
-            result.append(country_data)
-    
-    return result
 
 
 def covidStatsByCountryAndDateRange(min, max, targetCountry):
